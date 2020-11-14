@@ -287,6 +287,10 @@ class Connection extends Component
      */
     public $database = 0;
     /**
+     * @var string redis 6.0
+     */
+    public $username = 'default';
+    /**
      * @var float timeout to use for connection to redis. If not set the timeout set in php.ini will be used: `ini_get("default_socket_timeout")`.
      */
     public $connectionTimeout;
@@ -631,7 +635,11 @@ class Connection extends Component
                 stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
             }
             if ($this->password !== null) {
-                $this->executeCommand('AUTH', [$this->password]);
+                if ($this->username != '') {
+                    $this->executeCommand('AUTH',[$this->username,$this->password]);
+                } else {
+                    $this->executeCommand('AUTH', [$this->password]);
+                }
             }
             if ($this->database !== null) {
                 $this->executeCommand('SELECT', [$this->database]);
