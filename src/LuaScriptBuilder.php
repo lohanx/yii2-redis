@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\redis;
+namespace lohanx\redis;
 
 use yii\base\InvalidParamException;
 use yii\base\NotSupportedException;

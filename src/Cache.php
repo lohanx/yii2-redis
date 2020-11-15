@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\redis;
+namespace lohanx\redis;
 
 use Yii;
 use yii\db\Exception;
